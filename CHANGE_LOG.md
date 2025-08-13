@@ -6,3 +6,8 @@
 - [ADD] Implemented function for single style without range.
 - [ADD] Implemented function for style with range.
 - [ADD] Created system that produces file based on output.
+- [GEN] STYLE: display
+- [GEN] STYLE: padding
+- [GEN] STYLE: margin
+- [GEN] STYLE: aspect-ratio
+- [GEN] STYLE: border-radius

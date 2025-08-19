@@ -60,7 +60,7 @@ end
 ---@param rate number|nil [opt=5]
 ---@param unit string|nil [opt=px]
 ---@return string "concatonated string of classes within the range"
-function singleValueStyleWithRange(selector_template, style, range, rate, unit)
+local function singleValueStyleWithRange(selector_template, style, range, rate, unit)
     range = range or 6
     rate = rate or 5
     unit = unit or "px"
@@ -75,6 +75,30 @@ function singleValueStyleWithRange(selector_template, style, range, rate, unit)
     return output
 end
 
+local function hslValueGen(h, s, l)
+  return "hsl("..h..","..s..","..l..")"
+end
+
+---comment
+---@param selector_template string
+---@param style string`
+---@param hue number
+---@param saturation number
+---@param light number [opt=10]
+local function colorStyleWithRange(selector_template, style, hue, saturation, light)
+  local light = light or 10
+  local count = 0
+  local output = "";
+  while count <= light do
+    local selector = selector_template..'-'.. count
+    local value = 100/light * count
+    output = output .. singleValueClassTemplate(selector, style, hslValueGen(hue, saturation, value)).."\n"
+    count = count + 1
+  end
+  return output
+end
+
+---GENERATE CSS FILE
 local file = io.open("styles.csv", "r")  -- "r" means read mode
 if not file then error("Could not open file styles.csv") end
 local header = file:lines()()
@@ -98,6 +122,8 @@ io.output(outputFile)
 for _, style in ipairs(styles) do
     if tonumber(style.range) == 0 then
         io.write(singleValueStyle(style.selector_template, style.style, style.value1))
+    elseif tonumber(style.range) == 2 then
+      io.write(colorStyleWithRange(style.selector_template, style.style, style.value1, style.value2, style.value3))
     else
        io.write(singleValueStyleWithRange(style.selector_template, style.style, tonumber(style.value1), tonumber(style.value2), style.value3))
     end

@@ -30,8 +30,9 @@ This project will be a success if I can create a website without having to touch
 - [x] STYLE: margin
 - [x] STYLE: aspect-ratio
 - [x] STYLE: border-radius
-- [ ] STYLE: color
-- [ ] STYLE: background-color
+- [x] STYLE: color
+- [x] STYLE: background-color
+- [ ] STYLE: dark-mode(color only)
 - [ ] STYLE: font-family
 - [ ] STYLE: font-size
 - [ ] STYLE: text-align

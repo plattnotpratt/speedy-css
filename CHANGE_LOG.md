@@ -1,3 +1,8 @@
+8/18/2025 v0.0.2 - Added Font Color and Background Color
+- [ADD]Implemented function for a color string generator
+- [ADD] Implemented function for generating color styles
+- [GEN] STYLE: background-color
+- [GEN] STYLE: color
 8/13/2025 v0.0.1 - Proof of concept
 - [ADD]Implemented function for single value style template.
 - [ADD]implemented function for single value style generation over range.
